@@ -1,30 +1,42 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { ITag } from './Tag';
+import Link from './Link';
 
 export interface IBlog extends Document {
   title: string;
-  info: string;
+  purpose: string;
   // TODO: Create new model for the tags and links
-  tags: string[];
+  tags: Array<ITag['_id']>;
   text: string;
-  links: [
-    {
-      text: string;
-      url: string;
-    }
-  ];
-  videoUrl: string;
+  links: Array<Link>;
+  video?: string;
 }
 
 const BlogSchema: Schema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
-  info: String,
-  tags: [String],
-  text: String,
-  links: [{ text: String, url: String }],
-  videoUrl: String,
+
+  purpose: {
+    type: String,
+    required: true
+  },
+
+  tags: [{ 
+    type: Schema.Types.ObjectId
+  }],
+
+  text: {
+    type: String,
+    required: true
+  },
+
+  links: [{
+    type: Link
+  }],
+  
+  video: String,
 });
 
 // Export the model and return the IBlog interface
