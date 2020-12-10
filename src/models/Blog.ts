@@ -5,30 +5,39 @@ import Link from "./Link";
 export interface IBlog extends Document {
   title: string;
   date: Date;
-  location: string;
+  location?: string;
   text: string;
   links: Array<Link>;
-  image: Image;
+  image?: Image;
 }
 
 const BlogSchema: Schema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
 
   date: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   },
 
-  location: String,
+  location: {
+    type: String
+  },
 
-  text: String,
+  text: {
+    type: String,
+    required: true
+  },
 
-  links: [Link],
+  links: [{
+    type: Link
+  }],
   
-  image: [Image]
+  image: {
+    type: Image
+  }
 });
 
 // Export the model and return the IBlog interface
