@@ -1,16 +1,14 @@
 import mongoose, { Schema, Document } from "mongoose";
+import Image from "./Image";
+import Link from "./Link";
 
 export interface IBlog extends Document {
   title: string;
   date: Date;
   location: string;
   text: string;
-  links: [
-    {
-      text: string;
-      url: string;
-    }
-  ];
+  links: [Link];
+  image: Image;
 }
 
 const BlogSchema: Schema = new Schema({
@@ -24,12 +22,8 @@ const BlogSchema: Schema = new Schema({
   },
   location: String,
   text: String,
-  links: [
-    {
-      text: String,
-      url: String,
-    },
-  ],
+  links: [Link],
+  image: [Image]
 });
 
 // Export the model and return the IBlog interface
