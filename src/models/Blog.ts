@@ -7,7 +7,7 @@ export interface IBlog extends Document {
   date: Date;
   location: string;
   text: string;
-  links: [Link];
+  links: Array<Link>;
   image: Image;
 }
 
@@ -16,13 +16,18 @@ const BlogSchema: Schema = new Schema({
     type: String,
     required: true,
   },
+
   date: {
     type: Date,
     default: Date.now,
   },
+
   location: String,
+
   text: String,
+
   links: [Link],
+  
   image: [Image]
 });
 
