@@ -1,1 +1,1 @@
-Backend API powered by MongoDB
+Backend API powered by Express.js and MongoDB
