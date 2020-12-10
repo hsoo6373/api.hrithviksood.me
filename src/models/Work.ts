@@ -4,6 +4,7 @@ import Link from './Link';
 
 export interface IBlog extends Document {
   title: string;
+  date: Date;
   purpose: string;
   // TODO: Create new model for the tags and links
   tags: Array<ITag['_id']>;
@@ -16,6 +17,11 @@ const BlogSchema: Schema = new Schema({
   title: {
     type: String,
     required: true
+  },
+
+  date: {
+    type: Date,
+    default: Date.now
   },
 
   purpose: {
